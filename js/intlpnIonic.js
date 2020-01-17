@@ -264,7 +264,9 @@ angular.module('intlpnIonic', ['ionic', 'ionic_filter_bar'])
                 searchPlaceholder: '@',
                 countryIsoCode: '=?',
                 countryDialCode: '=?',
-                focusOnLoad: '=?'
+                focusOnLoad: '=?',
+                searchIconSpec: '=',
+                closeIconSpec: '=',
             },
             controller: intlpnCtrl,
             link:function (scope, element, attrs, ngModelCtrl) {
@@ -411,21 +413,25 @@ angular.module('intlpnIonic', ['ionic', 'ionic_filter_bar'])
                     });
                 var modalTemplate = 
                     '<ion-modal-view>' +
-                        '<ion-header-bar class="'+scope.boxHeaderClass+'">' + //need to have the class before creation
-                            '<button class="button button-clear icon ion-ios-close-empty" ng-click="modalScope.close()"></button>' +
-                                '<span ng-class="modalScope.closeIcon.cls">' +
-                                    '<span ng-repeat="cls in modalScope.closeIcon.paths" ng-class="cls"></span>' +
-                                '</span>' +
-                            '</button>' +
-
-                            '<h1 class="title" ng-bind=":: modalScope.boxHeaderTitle"></h1>' +
+                        '<ion-nav-bar class="'+scope.boxHeaderClass+'">' +
+                            '<ion-nav-buttons side="left">' +
+                                '<button class="no-hide no-button button-clear" ng-click="modalScope.close()">' +
+                                    '<span ng-class="modalScope.closeIcon.cls">' +
+                                        '<span ng-repeat="cls in modalScope.closeIcon.paths" ng-class="cls"></span>' +
+                                    '</span>' +
+                                '</button>' +
+                            '</ion-nav-buttons>' +
                             
-                            '<button class="no-hide no-button button-clear" ng-click="modalScope.showSearch()">' +
-                                '<span ng-class="modalScope.searchIcon.cls">' +
-                                    '<span ng-repeat="cls in modalScope.searchIcon.paths" ng-class="cls"></span>' +
-                                '</span>' +
-                        '   </button>' +
-                        '</ion-header-bar>' +
+                            '<ion-nav-title class="title-modal" ng-bind=":: modalScope.boxHeaderTitle"></ion-nav-title>' +
+                            
+                            '<ion-nav-buttons side="right">' +
+                                '<button class="no-hide no-button button-clear" ng-click="modalScope.showSearch()">' +
+                                    '<span ng-class="modalScope.searchIcon.cls">' +
+                                        '<span ng-repeat="cls in modalScope.searchIcon.paths" ng-class="cls"></span>' +
+                                    '</span>' +
+                                '</button>' +
+                            '</ion-nav-buttons>' +
+                        '</ion-nav-bar>' +
 
                         '<ion-content class="has-subheader intl-pn-ionic-country-container">' +
                             '<ion-list>' +
