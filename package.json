@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mmorgalocabal/intlpnIonic.git"
+    "url": "git+https://github.com/abrahamtoledo/intlpnIonic.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mmorgalocabal/intlpnIonic/issues"
+    "url": "https://github.com/abrahamtoledo/intlpnIonic/issues"
   },
-  "homepage": "https://github.com/mmorgalocabal/intlpnIonic#readme"
+  "homepage": "https://github.com/abrahamtoledo/intlpnIonic#readme"
 }
