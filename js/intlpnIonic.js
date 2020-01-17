@@ -409,23 +409,35 @@ angular.module('intlpnIonic', ['ionic', 'ionic_filter_bar'])
                             }
                         }
                     });
-                var modalTemplate = '<ion-modal-view>' +
-                    '<ion-header-bar class="'+scope.boxHeaderClass+'">' + //need to have the class before creation
-                    '<button class="button button-clear icon ion-ios-close-empty" ng-click="modalScope.close()"></button>' +
-                    '<h1 class="title" ng-bind=":: modalScope.boxHeaderTitle"></h1>' +
-                    '<button class="button button-icon button-clear ion-ios-search" ng-click="modalScope.showSearch()"></button>' +
-                    '</ion-header-bar>' +
-                    '<ion-content class="has-subheader intl-pn-ionic-country-container">' +
-                    '<ion-list>' +
-                    '<ion-item ng-repeat="country in modalScope.countries"' +
-                    'ng-click="modalScope.selectCountry( country )" ' +
-                    'class="item-icon-left intl-pn-ionic-country-item" ng-class="(country.iso2 == modalScope.currentCountry)?\'item-icon-right\':\'\'">' +
-                    '<i class="icon icon-intlpn-flag {{:: country.iso2}}" ></i>' +
-                    '{{:: country.name}}' +
-                    '<i class="icon ion-ios-checkmark-empty" ng-if="(country.iso2 == modalScope.currentCountry)"></i>' +
-                    '</ion-item>' +
-                    '</ion-list>' +
-                    '</ion-content>' +
+                var modalTemplate = 
+                    '<ion-modal-view>' +
+                        '<ion-header-bar class="'+scope.boxHeaderClass+'">' + //need to have the class before creation
+                            '<button class="button button-clear icon ion-ios-close-empty" ng-click="modalScope.close()"></button>' +
+                                '<span ng-class="modalScope.closeIcon.cls">' +
+                                    '<span ng-repeat="cls in modalScope.closeIcon.paths" ng-class="cls"></span>' +
+                                '</span>' +
+                            '</button>' +
+
+                            '<h1 class="title" ng-bind=":: modalScope.boxHeaderTitle"></h1>' +
+                            
+                            '<button class="no-hide no-button button-clear" ng-click="modalScope.showSearch()">' +
+                                '<span ng-class="modalScope.searchIcon.cls">' +
+                                    '<span ng-repeat="cls in modalScope.searchIcon.paths" ng-class="cls"></span>' +
+                                '</span>' +
+                        '   </button>' +
+                        '</ion-header-bar>' +
+
+                        '<ion-content class="has-subheader intl-pn-ionic-country-container">' +
+                            '<ion-list>' +
+                                '<ion-item ng-repeat="country in modalScope.countries"' +
+                                    'ng-click="modalScope.selectCountry( country )" ' +
+                                    'class="item-icon-left intl-pn-ionic-country-item" ng-class="(country.iso2 == modalScope.currentCountry)?\'item-icon-right\':\'\'">' +
+                                        '<i class="icon icon-intlpn-flag {{:: country.iso2}}" ></i>' +
+                                        '{{:: country.name}}' +
+                                        '<i class="icon ion-ios-checkmark-empty" ng-if="(country.iso2 == modalScope.currentCountry)"></i>' +
+                                '</ion-item>' +
+                            '</ion-list>' +
+                        '</ion-content>' +
                     '</ion-modal-view>';
                 scope.modalScope = {
                     selectCountry: function( country ) {
@@ -458,7 +470,9 @@ angular.module('intlpnIonic', ['ionic', 'ionic_filter_bar'])
                     },
                     countries: scope.intlpnHelper.countries,
                     boxHeaderTitle: scope.boxHeaderTitle,
-                    searchPlaceholder: scope.searchPlaceholder
+                    searchPlaceholder: scope.searchPlaceholder,
+                    closeIcon: scope.closeIconSpec,
+                    searchIcon: scope.searchIconSpec
                 };
                 scope.modal = $ionicModal.fromTemplate( modalTemplate, {
                     scope: scope
