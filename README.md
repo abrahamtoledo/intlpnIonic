@@ -14,7 +14,7 @@ Implemenation is dirty for now, as i need that as soon as possible.
 ## Getting Started
 1. Install the package
  ```bash
- npm install https://github.com/abrahamtoledo/intlpnIonic.git#0.3.1 --save
+ npm install "git+https://github.com/abrahamtoledo/intlpnIonic.git#0.3.1" --save
  ```
  or include it in your project dependencies.
 
