@@ -1,6 +1,6 @@
 {
   "name": "intl-pn-ionic",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Simple version of intl-phone number input for Ionic",
   "main": "js/intlpnIonic.js",
   "scripts": {
